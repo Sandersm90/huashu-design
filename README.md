@@ -1,11 +1,10 @@
-<sub><b>🌐 English</b> · <a href="README.zh.md">中文</a></sub>
+<sub><b>🌐 English</b> · <a href="archive/zh/README.zh.md">中文 archive</a></sub>
 
 <div align="center">
 
 # Huashu Design
 
 > *"Type. Hit enter. A finished design lands in your lap."*
-> *「打字。回车。一份能交付的设计。」*
 
 [![License](https://img.shields.io/badge/License-Personal%20Use%20Only-orange.svg)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)](https://skills.sh)
@@ -29,7 +28,7 @@ npx skills add alchaincyf/huashu-design
 
 [See it work](#demo-gallery) · [Install](#install) · [What it does](#what-it-does) · [How it works](#core-mechanics) · [vs. Claude Design](#vs-claude-design)
 
-> 📖 **Note for English readers**: English is now the primary runtime documentation set for the skill. The original Chinese docs are archived under `archive/zh/` for reference and source comparison.
+> 📖 **Note**: English is now the primary runtime documentation set for the skill. The original Chinese docs and demo variants are archived under `archive/zh/` for reference and source comparison.
 
 </div>
 
@@ -90,7 +89,7 @@ No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Cod
 
 ## Demo Gallery
 
-> English parallel versions of the demos. Chinese versions live at the default filenames (see the Chinese README).
+> The English demos now live at the default filenames. Chinese demo variants are archived under `archive/zh/demos/`.
 
 ### Design Direction Advisor
 
@@ -237,7 +236,7 @@ This is an 80-point skill, not a 100-point product. For people unwilling to open
 huashu-design/
 ├── SKILL.md                 # Main doc (read by agent, English)
 ├── README.md                # English README (this file)
-├── README.zh.md             # Chinese README
+├── archive/zh/README.zh.md # Chinese README archive
 ├── assets/                  # Starter Components
 │   ├── animations.jsx       # Stage + Sprite + Easing + interpolate
 │   ├── ios_frame.jsx        # iPhone 15 Pro bezel
