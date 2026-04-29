@@ -107,7 +107,7 @@ GIF is limited to 256 colors. A generated palette pass followed by a palette-usa
 - [ ] duration matches the real animation length
 - [ ] the Stage respects `window.__recording` and disables looping during export
 - [ ] ending sprites use `fadeOut={0}` so the last frame stays clear
-- [ ] the animation watermark rules in `SKILL.en.md` are respected
+- [ ] the animation watermark rules in `SKILL.md` are respected
 
 ## Delivery note format
 
