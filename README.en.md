@@ -29,7 +29,7 @@ npx skills add alchaincyf/huashu-design
 
 [See it work](#demo-gallery) · [Install](#install) · [What it does](#what-it-does) · [How it works](#core-mechanics) · [vs. Claude Design](#vs-claude-design)
 
-> 📖 **Note for English readers**: this skill is built by a Chinese-speaking developer. The skill's agent prompts (`SKILL.md`, `references/*.md`) are in Chinese but the agent is bilingual — works fine with English tasks. The demos below are the English parallel versions; the Chinese ones are in the default-named files (see the Chinese [README.md](README.md)).
+> 📖 **Note for English readers**: English is now the primary runtime documentation set for the skill. The original Chinese docs are archived under `archive/zh/` for reference and source comparison.
 
 </div>
 
@@ -235,8 +235,8 @@ This is an 80-point skill, not a 100-point product. For people unwilling to open
 
 ```
 huashu-design/
-├── SKILL.md                 # Main doc (read by agent, Chinese)
-├── README.md                # Chinese README (default)
+├── SKILL.md                 # Main doc (read by agent, English)
+├── README.md                # Chinese README
 ├── README.en.md             # English README (this file)
 ├── assets/                  # Starter Components
 │   ├── animations.jsx       # Stage + Sprite + Easing + interpolate
@@ -249,7 +249,7 @@ huashu-design/
 │   ├── design_canvas.jsx    # Side-by-side variation display
 │   ├── showcases/           # 24 prebuilt samples (8 scenes × 3 styles)
 │   └── bgm-*.mp3            # 6 scene-specific background tracks
-├── references/              # Drill-down docs by task (Chinese)
+├── references/              # Drill-down docs by task (English)
 │   ├── animation-pitfalls.md
 │   ├── design-styles.md     # 20 design philosophies in detail
 │   ├── slide-decks.md
