@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 <meta charset="utf-8" />
-<title>c6 · Five Axes · One Punch List</title>
+<title>c6 · 五个维度，给你一份手术单</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Noto+Serif+SC:wght@200;300;400;500;600&family=Inter:wght@100;200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -309,17 +309,15 @@
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: 0.2em;
-    fill: var(--muted);
+    fill: var(--ink-80);
     text-transform: uppercase;
-    opacity: 0;
   }
   .radar-label-zh {
-    font-family: var(--serif-en);
+    font-family: var(--serif-zh);
     font-size: 22px;
-    font-weight: 400;
-    font-style: italic;
+    font-weight: 300;
     fill: var(--ink);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.05em;
   }
   .radar-score {
     font-family: var(--mono);
@@ -406,10 +404,9 @@
     text-transform: uppercase;
   }
   .fix-zh {
-    font-family: var(--serif-en);
+    font-family: var(--serif-zh);
     font-size: 28px;
     font-weight: 400;
-    font-style: italic;
     color: var(--ink);
   }
   .fix-count {
@@ -526,7 +523,7 @@
     <div class="mark">HUASHU · DESIGN</div>
     <div class="mark-right">V2 · 2026</div>
 
-    <div class="title-line" id="titleLine">c6 · Expert Review · Five Axes</div>
+    <div class="title-line" id="titleLine">c6 · 专家评审 · 五个维度</div>
 
     <div class="camera" id="camera">
       <!-- Subject: design under review -->
@@ -556,7 +553,7 @@
       <div class="sweep-line" id="sweepLine"></div>
 
       <!-- Radar chart (right) -->
-      <div class="radar-title" id="radarTitle">Five-Axis Diagnosis · Radar</div>
+      <div class="radar-title" id="radarTitle">五维诊断 · RADAR</div>
       <div class="radar-wrap" id="radarWrap">
         <svg viewBox="-270 -270 540 540" xmlns="http://www.w3.org/2000/svg">
           <!-- Grid rings (5 levels) -->
@@ -576,8 +573,8 @@
         <div class="score-row">
           <div class="score-num"><span id="scoreNum">0</span><span class="accent">/50</span></div>
           <div>
-            <div class="score-label">OVERALL · PASSED</div>
-            <div class="score-total">WEIGHTED · 7.4</div>
+            <div class="score-label">总评 · PASSED</div>
+            <div class="score-total">五维加权 · 7.4</div>
           </div>
         </div>
       </div>
@@ -586,12 +583,12 @@
       <div class="fix-lane" id="fixLane">
         <div class="fix-head">
           <span class="fix-mark">FIX</span>
-          <span class="fix-zh">Fix</span>
+          <span class="fix-zh">修复</span>
           <span class="fix-count">01 / 01</span>
         </div>
         <div class="fix-row">
           <span class="idx">01</span>
-          <span><span class="fix-severity">⚡</span>Tracking <span class="mono">0.02</span><span class="arrow"> → </span><span class="mono">0.04em</span></span>
+          <span><span class="fix-severity">⚡</span>字距 <span class="mono">0.02em</span><span class="arrow"> → </span><span class="mono">0.04em</span></span>
           <div class="fix-pulse" id="fixPulse"></div>
         </div>
       </div>
@@ -638,11 +635,11 @@
   // ============ Build radar SVG ============
   const RADIUS = 210;
   const AXES = [
-    { zh: 'Philosophy', en: 'PHILOSOPHY', score: 8 },
-    { zh: 'Hierarchy',  en: 'HIERARCHY',  score: 6 },
-    { zh: 'Execution',  en: 'EXECUTION',  score: 8 },
-    { zh: 'Function',   en: 'FUNCTION',   score: 7 },
-    { zh: 'Innovation', en: 'INNOVATION', score: 8 },
+    { zh: '哲学', en: 'PHILOSOPHY', score: 8 },
+    { zh: '层级', en: 'HIERARCHY',  score: 6 },
+    { zh: '执行', en: 'EXECUTION',  score: 8 },
+    { zh: '功能', en: 'FUNCTION',   score: 7 },
+    { zh: '创新', en: 'INNOVATION', score: 8 },
   ];
   const N = AXES.length;
 
@@ -698,7 +695,7 @@
     const baseRadial = RADIUS + 36;
     const [bx, by] = axisPoint(i, baseRadial);
 
-    // Title Case serif italic label (only one per axis in EN)
+    // ZH label
     const zhText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     zhText.setAttribute('x', bx.toFixed(2));
     zhText.setAttribute('y', by.toFixed(2));
@@ -707,6 +704,18 @@
     zhText.setAttribute('class', 'radar-label-zh');
     zhText.textContent = axis.zh;
     labelsG.appendChild(zhText);
+
+    // EN label stacks vertically below ZH (always +22px in y)
+    const enText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    enText.setAttribute('x', bx.toFixed(2));
+    enText.setAttribute('y', (by + 22).toFixed(2));
+    enText.setAttribute('text-anchor', anchor);
+    enText.setAttribute('dominant-baseline', 'middle');
+    enText.setAttribute('class', 'radar-label');
+    enText.textContent = axis.en;
+    enText.setAttribute('opacity', '0');
+    enText.setAttribute('data-type', 'en-label');
+    labelsG.appendChild(enText);
   });
 
   // Points (initial: center)
