@@ -91,6 +91,22 @@ scripts/start-preview.sh --project-dir /path/to/project
 scripts/stop-preview.sh <session_dir>
 ```
 
+快速载入 demo：
+
+```bash
+scripts/load-preview-demo.sh <content_dir> both
+```
+
+它会把一个 fragment demo 和一个完整 HTML demo 都拷进去，方便你马上测两种模式。
+
+示例 prompt：
+
+```text
+Use huashu-design preview mode. Show me 3 design directions for an AI focus app in the browser and let me click the one I want.
+
+Build me a first-pass iOS prototype for a calm pomodoro app. Use the local preview server so I can review it live in the browser while you iterate.
+```
+
 ---
 
 ## Star 趋势

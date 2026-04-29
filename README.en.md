@@ -89,6 +89,22 @@ Stop it later with:
 scripts/stop-preview.sh <session_dir>
 ```
 
+Quick demo loader:
+
+```bash
+scripts/load-preview-demo.sh <content_dir> both
+```
+
+This copies a wrapped fragment demo plus a full HTML demo into the preview session so you can test both modes quickly.
+
+Example agent prompts:
+
+```text
+Use huashu-design preview mode. Show me 3 design directions for an AI focus app in the browser and let me click the one I want.
+
+Build me a first-pass iOS prototype for a calm pomodoro app. Use the local preview server so I can review it live in the browser while you iterate.
+```
+
 ---
 
 ## Star History

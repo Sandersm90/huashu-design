@@ -57,6 +57,12 @@ scripts/start-preview.sh --project-dir /path/to/project
 scripts/stop-preview.sh <session_dir>
 ```
 
+如果你只是想快速验证 preview 功能本身，可直接载入仓库自带 demo：
+
+```bash
+scripts/load-preview-demo.sh <content_dir> both
+```
+
 ### 工作方式
 
 1. 启动 preview server
@@ -88,6 +94,14 @@ window.huashuPreview.note('user paused on option b')
 - **不要复用同一个文件名硬改历史 screen**——每次推进一个新 screen，更利于 review 和回看
 - preview 用于 review / iterate；最终交付仍然是 HTML / MP4 / GIF / PDF / PPTX 中适合任务的格式
 - 如果 preview 里引用本地 assets，默认放在 `content_dir` 同级路径下，通过相对路径引用
+
+### 示例 prompt
+
+以下 prompt 很适合触发 preview 模式：
+
+- `Use huashu-design preview mode. Show me 3 design directions for an AI focus app in the browser and let me click the one I want.`
+- `Build me a first-pass iOS prototype for a calm pomodoro app. Use the local preview server so I can review it live in the browser while you iterate.`
+- `Make a browser preview for a landing page concept with 3 selectable style directions and at least one tweakable visual parameter.`
 
 ## 核心原则 #0 · 事实验证先于假设（优先级最高，凌驾所有其他流程）
 
