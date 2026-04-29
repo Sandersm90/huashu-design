@@ -62,6 +62,49 @@ Then just talk to Claude Code:
 
 No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Code, Cursor, Trae, Hermes, OpenClaw, or any markdown-skill-capable agent.
 
+### Local Preview (v1)
+
+Huashu now includes a lightweight browser preview server for iterative review.
+
+- serves the newest `.html` file from a preview session directory
+- auto-reloads the browser when the agent writes a new screen
+- captures click selections from elements with `data-choice`
+- supports both full HTML documents and lightweight wrapped fragments
+
+Start it from the repo root:
+
+```bash
+scripts/start-preview.sh --project-dir /path/to/project
+```
+
+The command returns JSON containing:
+
+- `url` — open this in your browser
+- `content_dir` — write preview HTML files here
+- `state_dir` — read `events` / `server-info` here
+
+Stop it later with:
+
+```bash
+scripts/stop-preview.sh <session_dir>
+```
+
+Quick demo loader:
+
+```bash
+scripts/load-preview-demo.sh <content_dir> both
+```
+
+This copies a wrapped fragment demo plus a full HTML demo into the preview session so you can test both modes quickly.
+
+Example agent prompts:
+
+```text
+Use huashu-design preview mode. Show me 3 design directions for an AI focus app in the browser and let me click the one I want.
+
+Build me a first-pass iOS prototype for a calm pomodoro app. Use the local preview server so I can review it live in the browser while you iterate.
+```
+
 ---
 
 ## Star History

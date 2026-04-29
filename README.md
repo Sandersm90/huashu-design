@@ -64,6 +64,49 @@ npx skills add alchaincyf/huashu-design
 
 没有按钮、没有面板、没有 Figma 插件。
 
+## 本地 Preview（v1）
+
+现在仓库里带了一个轻量浏览器 preview server，用来做迭代式查看：
+
+- 自动展示 preview session 目录里最新的 `.html`
+- agent 写入新 screen 后浏览器自动 reload
+- 点击带 `data-choice` 的元素会记录选择事件
+- 既支持完整 HTML，也支持自动包裹的轻量 fragment
+
+在仓库根目录启动：
+
+```bash
+scripts/start-preview.sh --project-dir /path/to/project
+```
+
+返回 JSON 里有：
+
+- `url` — 浏览器打开这个地址
+- `content_dir` — 往这里写 preview HTML
+- `state_dir` — 从这里读取 `events` / `server-info`
+
+结束时：
+
+```bash
+scripts/stop-preview.sh <session_dir>
+```
+
+快速载入 demo：
+
+```bash
+scripts/load-preview-demo.sh <content_dir> both
+```
+
+它会把一个 fragment demo 和一个完整 HTML demo 都拷进去，方便你马上测两种模式。
+
+示例 prompt：
+
+```text
+Use huashu-design preview mode. Show me 3 design directions for an AI focus app in the browser and let me click the one I want.
+
+Build me a first-pass iOS prototype for a calm pomodoro app. Use the local preview server so I can review it live in the browser while you iterate.
+```
+
 ---
 
 ## Star 趋势

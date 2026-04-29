@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Huashu Preview Demo · Full HTML</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="eyebrow">Full HTML demo</div>
+      <h1>Clickable direction preview</h1>
+      <p>This demo renders as a full HTML document. Relative assets should still work through the preview server.</p>
+
+      <div class="choice-list">
+        <div class="choice selected" data-choice="warm-editorial" data-label="Warm editorial">
+          <strong>Warm editorial</strong>
+          <span>Soft paper tones, premium serif feel, intimate launch-story pacing.</span>
+        </div>
+        <div class="choice" data-choice="clean-saas" data-label="Clean SaaS">
+          <strong>Clean SaaS</strong>
+          <span>Sharper structure, neutral surfaces, more direct product messaging.</span>
+        </div>
+        <div class="choice" data-choice="night-cinema" data-label="Night cinema">
+          <strong>Night cinema</strong>
+          <span>Darker background, heavier contrast, more dramatic hero framing.</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="hero">
+            <div class="label">AURA FOCUS</div>
+            <h2>Built for<br>quiet momentum.</h2>
+            <p>An AI focus product that feels calm, warm, and slightly editorial instead of generic productivity SaaS.</p>
+          </div>
+
+          <div class="cards">
+            <div class="card">
+              <div class="title">Morning routine</div>
+              <div class="meta">2 rituals · 1 reflection · ambient timer</div>
+            </div>
+            <div class="card">
+              <div class="title">Deep work circle</div>
+              <div class="meta">Focus room with small-group accountability</div>
+            </div>
+            <div class="card">
+              <div class="title">Evening unwind</div>
+              <div class="meta">Mood notes, audio fade, frictionless shutdown</div>
+            </div>
+          </div>
+
+          <div class="footer-bar">
+            <div class="active">Home</div>
+            <div>Focus</div>
+            <div>Journal</div>
+            <div>Profile</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const choices = Array.from(document.querySelectorAll('.choice'));
+    choices.forEach((choice) => {
+      choice.addEventListener('click', () => {
+        choices.forEach((item) => item.classList.remove('selected'));
+        choice.classList.add('selected');
+        window.huashuPreview?.state('direction', choice.dataset.choice, { label: choice.dataset.label });
+      });
+    });
+  </script>
+</body>
+</html>
