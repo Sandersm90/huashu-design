@@ -149,7 +149,9 @@ function isFullDocument(html) {
 
 function injectHelper(html, file) {
   const baseTag = `<base href="${baseHrefFor(file)}">`;
-  if (html.includes('</head>')) {
+  if (/<head\b[^>]*>/i.test(html)) {
+    html = html.replace(/<head\b([^>]*)>/i, `<head$1>\n${baseTag}`);
+  } else if (html.includes('</head>')) {
     html = html.replace('</head>', `${baseTag}\n</head>`);
   } else {
     html = `${baseTag}\n${html}`;
